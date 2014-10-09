@@ -34,13 +34,13 @@ public class BinarySearchAssert {
                 // MustBe(M+1,U)
                 assert (x.subList(l, u + 1).contains(t)) : "'MustBe(L,U)' assert error";
                 assert (!x.subList(0, m + 1).contains(t)) : "'CantBe(1,M)' assert error";//I think this should be CantBe(L,M)
-                assert (x.subList(m+1, u + 1).contains(t)) : "'MustBe(M+1,U)' assert error";
+                assert (x.subList(m + 1, u + 1).contains(t)) : "'MustBe(M+1,U)' assert error";
                 l = m + 1;
                 // MustBe(L,U)
                 assert (x.subList(l, u + 1).contains(t)) : "'MustBe(L,U)' assert error";
             } else if (t == x.get(m)) {
                 //X[M] = T
-                assert(t==x.get(m)):"'X[M] = T' assert error";
+                assert (t == x.get(m)) : "'X[M] = T' assert error";
                 p = m;
                 break;
             } else if (t < x.get(m)) {
@@ -57,33 +57,31 @@ public class BinarySearchAssert {
             assert (x.subList(l, u + 1).contains(t)) : "'MustBe(L,U)' assert error";
         }
         return p;
-
-
     }
 
     public static void main(String[] args) {
         System.out.println("let's test binary search");
-        List<Integer> testList=new ArrayList<Integer>();
+        List<Integer> testList = new ArrayList<Integer>();
         //test case one
         testList.add(0);//testList should be {0}
-        int result=binarySearch(testList,0);
-        assert(0==result):"test case one fails";
+        int result = binarySearch(testList, 0);
+        assert (0 == result) : "test case one fails";
 
         //test case two
         testList.add(1);//testList should be {0,1}
-        result=binarySearch(testList,0);
-        assert(0==result):"test case two fails";
-        result=binarySearch(testList,1);
-        assert(1==result):"test case two fails";
+        result = binarySearch(testList, 0);
+        assert (0 == result) : "test case two fails";
+        result = binarySearch(testList, 1);
+        assert (1 == result) : "test case two fails";
 
-        for (int i=2;i<10;i++){
+        for (int i = 2; i < 10; i++) {
             testList.add(i);
-            int t=i/4;
-            result=binarySearch(testList,t);
-            assert(result==t):"test case "+String.valueOf(i+1)+" fails";
-            t=i*3/4;
-            result=binarySearch(testList,t);
-            assert(result==t):"test case "+String.valueOf(i+1)+" fails";
+            int t = i / 4;
+            result = binarySearch(testList, t);
+            assert (result == t) : "test case " + String.valueOf(i + 1) + " fails";
+            t = i * 3 / 4;
+            result = binarySearch(testList, t);
+            assert (result == t) : "test case " + String.valueOf(i + 1) + " fails";
         }
         System.out.println("If you see this, it seems everything goes ok :D");
 
