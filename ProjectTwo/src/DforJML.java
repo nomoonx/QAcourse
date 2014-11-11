@@ -16,17 +16,18 @@ import java.util.StringTokenizer;
  * @author noMoon Nov 10, 2014 3:18:25 PM
   */
 public class DforJML {
-    static BufferedReader in;
-    static PrintWriter out;
-    static StringTokenizer tok;
+    static BufferedReader in=new BufferedReader(new InputStreamReader(System.in));
+    static PrintWriter out=new PrintWriter(new OutputStreamWriter(System.out));
     static int test;
 
     static void solve() throws Exception {
-			int n = nextInt();
-			int a = nextInt();
+			String line=in.readLine();
+			String params[]=line.split(" ");
+			int n = parseInt(params[0]);
+			int a = parseInt(params[1]);
 			boolean e[][] = new boolean[n][n];
 			for (int i = 0; i < n; i++) {
- 		   	String l = next();
+ 		   	String l = in.readLine();
     		for (int j = 0; j < n; j++) {
 					e[i][j] = l.charAt(j) == 'Y';
     		}
@@ -98,8 +99,8 @@ out.println();
 
     }
 
-    // requires used.length>=n && seen.length>=0
-    // ensures \result<=n
+    //@ requires used.length>=n && seen.length>=0;
+    //@ ensures \result<=n;
     static int dfs(int n, boolean[][] e, boolean[] used, boolean[] seen, int cur) {
 if (seen[cur] || used[cur]) {
     return 0;
@@ -122,32 +123,10 @@ out.print("Case #" + test + ": ");
 out.println("Case #" + test + ":");
     }
 
-    static int nextInt() throws IOException {
-return parseInt(next());
-    }
-
-    static long nextLong() throws IOException {
-return parseLong(next());
-    }
-
-    static double nextDouble() throws IOException {
-return parseDouble(next());
-    }
-
-    // @ensures \result!=null
-    static String next() throws IOException {
-while (tok == null || !tok.hasMoreTokens()) {
-    tok = new StringTokenizer(in.readLine());
-}
-return tok.nextToken();
-    }
-
     public static void main(String[] args) {
 try {
-    in = new BufferedReader(new InputStreamReader(System.in));
-    out = new PrintWriter(new OutputStreamWriter(System.out));
-    int tests = nextInt();
-    // @assert tests>=1 && tests<=100
+    int tests = parseInt(in.readLine());
+    //@ assert tests>=1 && tests<=100;
     for (test = 1; test <= tests; test++) {
 solve();
     }
